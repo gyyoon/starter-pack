@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noImplicitAny": true,
+        "target": "es5",
+        "module": "esnext",
+        "jsx": "react",
+        "allowJs": true,
+        "sourceMap": true,
+        "noEmit": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "removeComments": true,
+        "baseUrl": "./",
+        "paths": {
+            "@*": ["src/components/*"]
+        },
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+    },
+    "include": [
+        "src/**/*"
+	],
+	"exclude": [
+        "node_modules",
+        "**/*.spec.*",
+    ],
+    "typeRoots": [
+        "node_modules/@types",
+        "./types"
+    ],
+}

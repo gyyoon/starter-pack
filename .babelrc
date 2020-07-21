@@ -1,0 +1,21 @@
+{
+    "presets": [
+        "@babel/typescript",
+        "@babel/preset-react",
+        ["@babel/env", {
+            "targets": {
+                "ie": "11"
+            },
+            "useBuiltIns": "usage",
+            "corejs": 3
+        }]
+    ],
+    "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-optional-chaining",
+        [
+            "styled-components",
+            { "ssr": false, "displayName": true, "preprocess": false }
+        ]
+    ]
+}
