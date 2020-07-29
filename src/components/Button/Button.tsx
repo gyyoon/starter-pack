@@ -15,7 +15,7 @@ export interface Props {
   to?: string
 }
 
-const Button = ({ children, variant = 'primary', handleClick, to }: Props) => (
+const Button: React.FC<Props> = ({ children, variant = 'primary', handleClick, to }) => (
   <>
     {to ? (
       <StyledLink to={to} variant={variant}>

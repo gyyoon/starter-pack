@@ -1,13 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Button from '@/Button/Button'
 
-import Library from './index/index'
+import store from '~/store'
+
+import Index from './index/index'
 import Video from './video/index'
 import Vr from './vr/index'
+import TestPage from './testPage'
+import NotFound from '../../error/notFound'
 
 const App: React.FC = () => {
   return (
@@ -24,23 +28,16 @@ const App: React.FC = () => {
             <Button to="/vr">VR</Button>
           </li>
           <li>
-            <Button to="/xxx">xxxx</Button>
+            <Button to="/test-page">TestPage</Button>
           </li>
         </ul>
 
         <Switch>
-          <Route path="/video">
-            <Video />
-          </Route>
-          <Route path="/vr">
-            <Vr />
-          </Route>
-          <Route path="/">
-            <Library />
-          </Route>
-          <Route>
-            <Library />
-          </Route>
+          <Route path="/video" component={Video} />
+          <Route path="/vr" component={Vr} />
+          <Route path="/test-page" component={TestPage} />
+          <Route path="/" component={Index} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </div>
     </Router>
@@ -49,7 +46,9 @@ const App: React.FC = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )

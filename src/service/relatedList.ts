@@ -9,11 +9,15 @@ export interface ICatResponse {
   width: number
 }
 
-const getRelatedList = async (): Promise<ICatResponse[]> => {
+interface Props {
+  limit?: number
+}
+
+const getRelatedList = async ({ limit = 16 }: Props): Promise<ICatResponse[]> => {
   try {
     const response = await axios.get('https://api.thecatapi.com/v1/images/search', {
       params: {
-        limit: 16,
+        limit,
       },
     })
     return response.data

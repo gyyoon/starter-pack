@@ -1,23 +1,20 @@
 import React from 'react'
 
 import Button from '@/Button/Button'
-import Thumbnail from '@/Thumbnail/Thumbnail'
 
-const Library: React.FC = () => {
+const Index: React.FC = () => {
   return (
     <div className="App">
-      <p>this page is Library</p>
+      <p>this page is Index</p>
       <Button
-        variant="primary"
         handleClick={() => {
           console.log('click primary')
         }}
       >
         primary
       </Button>
-      <Thumbnail />
     </div>
   )
 }
 
-export default Library
+export default Index
