@@ -36,7 +36,7 @@ const App: React.FC = () => {
           <Route path="/video" component={Video} />
           <Route path="/vr" component={Vr} />
           <Route path="/test-page" component={TestPage} />
-          <Route path="/" component={Index} />
+          <Route exact path="/" component={Index} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>
