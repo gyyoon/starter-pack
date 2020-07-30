@@ -1,51 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
-import getRelatedList, { ICatResponse } from '../../service/relatedList'
-
-import { setList as setFetchList } from '~/store/list'
+import { ICatResponse } from '~/service/relatedList'
+import getCatList from '~/useCase/getCatList'
 
 interface Props {
   limit?: number
 }
 
 const Thumbnail: React.FC<Props> = ({ limit = 4 }) => {
-  const [list, setList] = useState<ICatResponse[]>([])
-  const dispatch = useDispatch()
   const { items } = useSelector((state: { list: { items: ICatResponse[] | null } }) => ({
     items: state.list.items,
   }))
 
   useEffect(() => {
-    const setThumnailList = async () => {
-      try {
-        const res = await getRelatedList({ limit })
-        dispatch(setFetchList(res))
-        setList(res)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    setThumnailList()
+    getCatList(limit)
   }, [limit])
 
   return (
     <>
       <h1>Thumbnail</h1>
-      <h2>use useState</h2>
-      <StyledGird>
-        {list.map((value) => {
-          return (
-            <div>
-              <StyledThumbnailWrap key={value.url} background={value.url} />
-              <StyledThumbnailName>
-                {value.categories ? value.categories[0].name : value.id}
-              </StyledThumbnailName>
-            </div>
-          )
-        })}
-      </StyledGird>
       <h2>use redux</h2>
       <StyledGird>
         {items !== null &&
