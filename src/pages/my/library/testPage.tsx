@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Button from '@/Button/Button'
 import Thumbnail from '@/Thumbnail/Thumbnail'
 
+import { counterStateType, catListStateType } from '~/store'
 import { increase, decrease, reset } from '~/store/counter'
+import getCatList from '~/useCase/getCatList'
 
 const TestPage: React.FC = () => {
-  const [fetchNumber, setFetchNumber] = useState(4)
-  const { number } = useSelector((state: { counter: { number: number } }) => ({
-    number: state.counter.number,
-  }))
   const dispatch = useDispatch()
+
+  const { number, items } = useSelector(
+    (state: { counter: counterStateType; catList: catListStateType }) => ({
+      number: state.counter.number,
+      items: state.catList.items,
+    })
+  )
+
+  useEffect(() => {
+    getCatList(4)
+  }, [])
 
   return (
     <div className="App">
@@ -44,14 +53,45 @@ const TestPage: React.FC = () => {
         <Button
           variant="secondary"
           handleClick={() => {
-            setFetchNumber(number)
+            getCatList(number, true)
           }}
         >
           Fetch with number
         </Button>
       </div>
 
-      <Thumbnail limit={fetchNumber} />
+      <h2>Thumbnail with redux</h2>
+      <Thumbnail items={items} />
+      <h2>bulma 12 columns flex layout</h2>
+      <div className="columns is-multiline is-mobile">
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+        <div className="column is-6-mobile is-3-tablet is-2-desktop">
+          is-6-mobile is-3-tablet is-2-desktop
+        </div>
+      </div>
     </div>
   )
 }

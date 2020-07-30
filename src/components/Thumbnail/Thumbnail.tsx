@@ -1,27 +1,16 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 
 import styled from 'styled-components'
-import { ICatResponse } from '~/service/relatedList'
-import getCatList from '~/useCase/getCatList'
 
-interface Props {
-  limit?: number
+interface IItems {
+  categories?: Array<{ id: number; name: string }>
+  id: string
+  url: string
 }
 
-const Thumbnail: React.FC<Props> = ({ limit = 4 }) => {
-  const { items } = useSelector((state: { list: { items: ICatResponse[] | null } }) => ({
-    items: state.list.items,
-  }))
-
-  useEffect(() => {
-    getCatList(limit)
-  }, [limit])
-
+const Thumbnail: React.FC<{ items: IItems[] | null }> = ({ items = null }) => {
   return (
     <>
-      <h1>Thumbnail</h1>
-      <h2>use redux</h2>
       <StyledGird>
         {items !== null &&
           items.map((value) => {
@@ -35,36 +24,6 @@ const Thumbnail: React.FC<Props> = ({ limit = 4 }) => {
             )
           })}
       </StyledGird>
-      <p>bulma 12 columns flex layout</p>
-      <div className="columns is-multiline is-mobile">
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-        <div className="column is-6-mobile is-3-tablet is-2-desktop">
-          is-6-mobile is-3-tablet is-2-desktop
-        </div>
-      </div>
     </>
   )
 }

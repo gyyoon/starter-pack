@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export interface Props {
+export interface IButtonProps {
   /**
    * required Text or Icon
    */
@@ -15,7 +15,7 @@ export interface Props {
   to?: string
 }
 
-const Button: React.FC<Props> = ({ children, variant = 'primary', handleClick, to }) => (
+const Button: React.FC<IButtonProps> = ({ children, variant = 'primary', handleClick, to }) => (
   <>
     {to ? (
       <StyledLink to={to} variant={variant}>

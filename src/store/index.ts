@@ -1,6 +1,6 @@
 import { createStore, combineReducers, compose } from 'redux'
-import counter from './counter'
-import list from './list'
+import counter, { AppState as counterState } from './counter'
+import catList, { AppState as catListState } from './catList'
 
 interface ExtendedWindow extends Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
@@ -9,7 +9,7 @@ declare let window: ExtendedWindow
 
 const rootReducer = combineReducers({
   counter,
-  list,
+  catList,
 })
 
 const composeEnhancers =
@@ -18,3 +18,6 @@ const composeEnhancers =
 const store = createStore(rootReducer, composeEnhancers())
 
 export default store
+
+export type catListStateType = catListState
+export type counterStateType = counterState

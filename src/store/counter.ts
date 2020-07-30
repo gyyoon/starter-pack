@@ -17,7 +17,7 @@ export const decrease = () => ({
   type: DECREASE,
 })
 
-interface AppState {
+export interface AppState {
   number: number
 }
 // initialState
