@@ -1,7 +1,4 @@
-# V2
-
-
-[Documention](https://confl.arms.dmm.com/x/6gRUIw)
+# starter-pack
 
 ## NPM tasks(WIP)
 **Local development**
@@ -27,6 +24,10 @@ npm run Analyze
 **Unit Test**
 ```
 npm run test
+```
+**Mock server**
+```
+npm run mock
 ```
 
 ## Code convention
