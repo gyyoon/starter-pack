@@ -10,11 +10,13 @@
     "env": {
         "browser": true,
         "node": true,
-        "es6": true
+        "es6": true,
+        "jest/globals": true
     },
     "plugins": [
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "jest"
     ],
     "extends": [
         "airbnb",
@@ -22,13 +24,20 @@
         "prettier/@typescript-eslint",
         "plugin:prettier/recommended",
         "prettier",
-        "prettier/react"
+        "prettier/react",
+        "plugin:jest/recommended"
     ],
     "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error",
         "prettier/prettier": "error",
         "import/no-extraneous-dependencies": ["error", {
             "devDependencies": [
-                "**/*.stories.*"
+                "**/*.stories.*",
+                "**/*.spec.*"
             ],
             "optionalDependencies": false
         }],

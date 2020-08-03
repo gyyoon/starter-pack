@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const analyze = process.env.ANALYZE;
 
 const webpackConfig = () => {
-  const outputDir = isDev ? 'dist' : 'dist';
+  const outputDir = isDev ? 'dist' : '../../public/assets/js';
 
   const config = {
     mode: process.env.NODE_ENV || 'development',

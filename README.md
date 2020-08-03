@@ -1,3 +1,8 @@
+# V2
+
+
+[Documention](https://confl.arms.dmm.com/x/6gRUIw)
+
 ## NPM tasks(WIP)
 **Local development**
 ```
@@ -18,6 +23,10 @@ npm run storybook
 **Bundle Analyze**
 ```
 npm run Analyze
+```
+**Unit Test**
+```
+npm run test
 ```
 
 ## Code convention
@@ -44,31 +53,69 @@ v2/
     └ components/
       └ {SomeComponent}
       ...
-    └ service/
+    └ config/
     └ pages/
       └ my/
         └ library/
           └  index/
       ...
     └ public/                   // local dev sever用templates
+    └ service/
+    └ store/
     └ useCase/
 ```
 **components**
 共用 components
-**service**
-API定義
-Not React Components
+**config**
+bundle関連設定（ex: sever, aixos）
 **pages**
 routeと 1：１構成でページ追加
 現状基本entryはApp.jsから
+**service**
+API定義
+Not React Components
+**store**
+redux storeとreducers
+middleware設定
 **useCase**
 共用business logic
+Dataのview modelの整形
 Not React Components
 
 ## Archtecture
+### Clean Architecture
+adpater、entity、presentationなしでシンプル化しました。
+```
+domain -> | service -> uasCase -> (Components)
+          |               └> redux -->--┛
+```
+- domain: 外部サーバentityは個々にある、APIサーバーのこと
+- service: domainとのAPI設計
+- useCase: serviceから取得したデータをView側で使うためのハンドリング
+- Components: page, container, atom, molecules等のコンポーネント
+
 ### redux
 Redux Ducks patternを使用します。
+[Ducks pattern](https://webbibouroku.com/Blog/Article/redux-ducks)
 
+### Unit test
+Jext + Enzyme
+Enzymeのshallow mountでテストします。
+- Propsテスト
+  - propによるrendering分岐テスト
+- eventテスと
+  - onClickなどinterrationテスト
+  - reactのlifeCycleテスト
+  - そのたviewロジックテスト
+- sideEffectテスト
+  - 通信APIテスト
+  - reduxテスト
+
+### Visualzation Test
+Storybookを利用します
+
+### E2Eテスト
+未定
 
 ## Recommended VS code extension
 - ESLint
