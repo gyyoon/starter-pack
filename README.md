@@ -66,26 +66,37 @@ v2/
     └ useCase/
 ```
 **components**
+
 共用 components
 
 **config**
+
 bundle関連設定（ex: sever, aixos）
 
 **pages**
+
 routeと 1：１構成でページ追加
+
 現状基本entryはApp.jsから
 
 **service**
+
 API定義
+
 Not React Components
 
 **store**
+
 redux storeとreducers
+
 middleware設定
 
 **useCase**
+
 共用business logic
+
 Dataのview modelの整形
+
 Not React Components
 
 ## Archtecture
