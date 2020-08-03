@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import cookie from 'js-cookie'
 
 import Button from '@/Button/Button'
-import { useTranslation } from 'react-i18next'
-import '~/config/i18n'
 
 import store from '~/store'
 
@@ -17,42 +14,23 @@ import TestPage from './testPage'
 import NotFound from '../../error/notFound'
 
 const App: React.FC = () => {
-  const [t, i18next] = useTranslation(['myLibrary', 'common'])
-  const [lang, setLang] = useState(i18next.language)
-
-  useEffect(() => {
-    i18next.changeLanguage(lang)
-  }, [lang, i18next])
-
   return (
     <Router>
       <div>
         <ul>
           <li>
-            <Button to="/">{t('common:Home')}</Button>
+            <Button to="/">Home</Button>
           </li>
           <li>
-            <Button to="/video">{t('common:Video')}</Button>
+            <Button to="/video">video</Button>
           </li>
           <li>
-            <Button to="/vr">{t('common:VR')}</Button>
+            <Button to="/vr">VR</Button>
           </li>
           <li>
-            <Button to="/test-page">{t('common:TestPage')}</Button>
+            <Button to="/test-page">TestPage</Button>
           </li>
         </ul>
-        <p>{t('I18 next')}</p>
-        <Button
-          handleClick={() => {
-            setLang(() => {
-              const nextLang = lang === 'en' ? 'zh' : 'en'
-              cookie.set('lang', nextLang)
-              return nextLang
-            })
-          }}
-        >
-          {t('Change language')}
-        </Button>
 
         <Switch>
           <Route path="/video" component={Video} />

@@ -6,6 +6,7 @@ import Thumbnail from '@/Thumbnail/Thumbnail'
 import { counterStateType, catListStateType } from '~/store'
 import { increase, decrease, reset } from '~/store/counter'
 import getCatList from '~/useCase/getCatList'
+import axios, { API } from '~/adapter/axios'
 
 const TestPage: React.FC = () => {
   const dispatch = useDispatch()
@@ -19,6 +20,14 @@ const TestPage: React.FC = () => {
 
   useEffect(() => {
     getCatList(4)
+
+    // test mock api
+    const testFetchVodList = async () => {
+      const res = await axios.get(API.user.vod)
+
+      console.log(res)
+    }
+    testFetchVodList()
   }, [])
 
   return (
