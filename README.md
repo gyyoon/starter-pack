@@ -1,6 +1,11 @@
-# starter-pack
+# Starter-pack
 
-## NPM tasks(WIP)
+## Environment and NPM tasks(WIP)
+以下の環境で開発及びNPMを利用してください。
+
+node: `12.13.1`
+
+***
 **Local development**
 ```
 npm run dev
@@ -25,7 +30,7 @@ npm run Analyze
 ```
 npm run test
 ```
-**Mock server**
+**Mock Server**
 ```
 npm run mock
 ```
@@ -65,39 +70,23 @@ v2/
     └ store/
     └ useCase/
 ```
-**components**
-
-共用 components
-
-**config**
-
-bundle関連設定（ex: sever, aixos）
-
-**pages**
-
-routeと 1：１構成でページ追加
-
-現状基本entryはApp.jsから
-
-**service**
-
-API定義
-
-Not React Components
-
-**store**
-
-redux storeとreducers
-
-middleware設定
-
-**useCase**
-
-共用business logic
-
-Dataのview modelの整形
-
-Not React Components
+**components**  
+共用 components  
+**config**  
+bundle関連設定（ex: sever, aixos）  
+**pages**  
+routeと 1：１構成でページ追加  
+現状基本entryはApp.jsから  
+**service**  
+API定義  
+Not React Components  
+**store**  
+redux storeとreducers  
+middleware設定  
+**useCase**  
+共用business logic  
+Dataのview modelの整形  
+Not React Components  
 
 ## Archtecture
 ### Clean Architecture
